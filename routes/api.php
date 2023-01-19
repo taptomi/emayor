@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('/blocs')->group(function(){
+
+    Route::get('/',[\App\Http\Controllers\API\BlocsController::class,'index']);
+    Route::get('/{shortname}',[\App\Http\Controllers\API\BlocsController::class,'show']);
+
+});
