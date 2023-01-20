@@ -19,5 +19,42 @@ class Blocs extends Model
 
     }
 
+    public static function boot(){
+
+        static::creating(function ($model) {
+            $log = new Log();
+            $log->user_id=auth()->user()->id;
+            $log->method = 'create';
+            $model->model='Blocs';
+            $log->meta = $model;
+            $log->save();
+        });
+
+        static::updating(function ($model) {
+            $log = new Log();
+            $log->user_id=auth()->user()->id;
+            $log->method = 'update';
+            $model->model='Blocs';
+            $log->meta = $model;
+            $log->save();
+        });
+
+        static::deleting(function ($model) {
+            $log = new Log();
+            $log->user_id=auth()->user()->id;
+            $log->method = 'delete';
+            $data=$model;
+            $data->model='Blocs';
+            $log->meta = $data;
+            $log->save();
+        });
+
+        parent::boot();
+
+
+
+
+    }
+
 
 }

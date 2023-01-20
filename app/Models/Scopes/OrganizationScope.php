@@ -19,7 +19,7 @@ class OrganizationScope implements Scope
     {
         if (auth()->check()) {
 
-            if(!in_array(auth()->user()->id,[1,2],false)) {
+            if(!auth()->user()->is_super()) {
 
                 $builder->whereHas('users', function ($relation) {
                     $relation->where('user_id', auth()->id());
