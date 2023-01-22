@@ -22,6 +22,10 @@ class OrganizationResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $navigationLabel = 'Honlap';
+
+    protected static ?string $pluralLabel = 'Honlapok';
+
     public static function form(Form $form): Form
     {
         return $form

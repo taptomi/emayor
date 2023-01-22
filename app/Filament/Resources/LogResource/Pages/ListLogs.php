@@ -10,6 +10,7 @@ class ListLogs extends ListRecords
 {
     protected static string $resource = LogResource::class;
 
+
     protected function getActions(): array
     {
         return [

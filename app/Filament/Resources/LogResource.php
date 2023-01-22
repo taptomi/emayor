@@ -22,6 +22,8 @@ class LogResource extends Resource
 
     protected static ?string $navigationLabel = 'Napló';
 
+    protected static ?string $pluralLabel = 'Naplóbejegyzések';
+
 
     public static function form(Form $form): Form
     {
