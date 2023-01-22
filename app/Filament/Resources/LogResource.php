@@ -20,13 +20,16 @@ class LogResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $navigationLabel = 'Napló';
+
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\Select::make('user_id')
-                    ->options(User::all()->pluck('name','id'))
-                ->label('Felhasználó')
+                    ->options(User::all()->pluck('name', 'id'))
+                    ->label('Felhasználó')
                 ,
                 Forms\Components\TextInput::make('method')
                     ->maxLength(255)->disabled(),
