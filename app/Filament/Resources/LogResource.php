@@ -18,6 +18,8 @@ class LogResource extends Resource
 {
     protected static ?string $model = Log::class;
 
+
+    //TODO Ikon keresése
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     protected static ?string $navigationLabel = 'Napló';

@@ -20,7 +20,7 @@ class Blocs extends Model
     }
 
     public static function boot(){
-
+        /*
         static::creating(function ($model) {
             $log = new Log();
             $log->user_id=auth()->user()->id;
@@ -51,7 +51,7 @@ class Blocs extends Model
             $log->meta = $data;
             $log->save();
         });
-
+        */
         parent::boot();
 
 

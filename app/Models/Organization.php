@@ -15,19 +15,26 @@ class Organization extends Model
 
         return $this->hasMany(Blocs::class,'organization_id','id');
 
+    }
+
+    public function documents()
+    {
+
+        return $this->hasMany(PublicDocument::class, 'organization_id', 'id');
 
     }
 
-    public function documents(){
+    public function users()
+    {
 
-        return $this->hasMany(PublicDocument::class,'organization_id','id');
+        return $this->hasManyThrough(User::class, OrganizationUser::class, 'organization_id', 'id', 'id', 'user_id');
 
     }
 
-    public function users(){
+    public function posts()
+    {
 
-        return $this->hasManyThrough(User::class,OrganizationUser::class,'organization_id','id','id','user_id');
-
+        return $this->hasMany(Post::class, 'organization_id', 'id');
 
     }
 
@@ -37,7 +44,5 @@ class Organization extends Model
 
         static::addGlobalScope(new OrganizationScope);
     }
-
-
 
 }

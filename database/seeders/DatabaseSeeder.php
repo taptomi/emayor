@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PublicDocumentCategorySeeder::class);
         $this->call(PublicDocumentSeeder::class);
         $this->call(OrganizationUserSeeder::class);
+        $this->call(PostSeeder::class);
+
 
         // \App\Models\User::factory(10)->create();
 
