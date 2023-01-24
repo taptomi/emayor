@@ -24,3 +24,9 @@ Route::prefix('/blocs')->group(function(){
     Route::get('/{shortname}',[\App\Http\Controllers\API\BlocsController::class,'show']);
 
 });
+
+Route::prefix('/posts')->group(function(){
+
+    Route::get('/{slug}',[\App\Http\Controllers\API\PostController::class,'show']);
+
+});

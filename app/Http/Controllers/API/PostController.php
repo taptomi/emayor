@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Organization;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -34,9 +36,23 @@ class PostController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug, Request $request)
     {
-        //
+
+        $validated=$request->validate([
+            'domain'=>'required'
+        ]);
+
+        $organization=Organization::where('domain','=',$validated['domain'])->get(['id'])->first();
+
+        if($organization!=null){
+            return Post::select('slug','title','content')->where('organization_id','=',$organization->id)->where('slug','=',$slug)->get()->first();
+        }
+        else{
+            abort(404);
+        }
+
+
     }
 
     /**

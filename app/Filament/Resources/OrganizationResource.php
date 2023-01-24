@@ -33,14 +33,13 @@ class OrganizationResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255)
-                    ->disabled(),
+                    ,
                 Forms\Components\TextInput::make('domain')
                     ->required()
                     ->maxLength(255)
-                    ->disabled(),
+                    ,
             ]);
     }
-
     public static function table(Table $table): Table
     {
         return $table
