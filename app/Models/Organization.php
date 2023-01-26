@@ -9,11 +9,15 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Organization extends Model
 {
-    use HasFactory,HasApiTokens;
+    use HasFactory, HasApiTokens;
 
-    public function blocs(){
+    protected $fillable = ['title', 'domain'];
 
-        return $this->hasMany(Blocs::class,'organization_id','id');
+
+    public function blocs()
+    {
+
+        return $this->hasMany(Blocs::class, 'organization_id', 'id');
 
     }
 

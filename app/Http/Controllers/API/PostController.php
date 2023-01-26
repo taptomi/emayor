@@ -14,9 +14,19 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'domain' => 'required'
+        ]);
+
+        $organization = Organization::where('domain', '=', $validated['domain'])->get(['id'])->first();
+
+        if ($organization != null) {
+            return Post::select('slug', 'title', 'content')->where('organization_id', '=', $organization->id)->get();
+        } else {
+            abort(404);
+        }
     }
 
     /**

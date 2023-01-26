@@ -30,15 +30,17 @@ class PostsRelationManager extends RelationManager
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255)
-                    ->columnSpan(2),
+                    ->columnSpan(2)
+
+                ,
                 Forms\Components\RichEditor::make('content')
                     ->columnSpan(2)
                     ->disableToolbarButtons([
                         'codeBlock',
                     ])
                     ->fileAttachmentsDisk('public')
-                    ->fileAttachmentsDirectory(function (\Closure $get) {
-                        $get('../organization_id');
+                    ->fileAttachmentsDirectory(function ($record) {
+                        return 'media/' . $record->organization_id;
 
                     })
                     ->fileAttachmentsVisibility('public')

@@ -27,6 +27,7 @@ Route::prefix('/blocs')->group(function(){
 
 Route::prefix('/posts')->group(function(){
 
-    Route::get('/{slug}',[\App\Http\Controllers\API\PostController::class,'show']);
+    Route::get('/', [\App\Http\Controllers\API\PostController::class, 'index']);
+    Route::get('/{slug}', [\App\Http\Controllers\API\PostController::class, 'show']);
 
 });
