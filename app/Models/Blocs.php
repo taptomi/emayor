@@ -27,9 +27,7 @@ class Blocs extends Model
             $log = new Log();
             $log->user_id=auth()->user()->id;
             $log->method = 'create';
-            $data=$model;
-            $data->ip=request()->ip();
-            $data->model='Blocs';
+
             $log->save();
         });
 
@@ -37,9 +35,7 @@ class Blocs extends Model
             $log = new Log();
             $log->user_id=auth()->user()->id;
             $log->method = 'update';
-            $data=$model;
-            $data->ip=request()->ip();
-            $data->model='Blocs';
+
             $log->save();
         });
 
@@ -47,10 +43,7 @@ class Blocs extends Model
             $log = new Log();
             $log->user_id=auth()->user()->id;
             $log->method = 'delete';
-            $data=$model;
-            $data->ip=request()->ip();
-            $data->model='Blocs';
-            $log->meta = $data;
+
             $log->save();
         });
 
