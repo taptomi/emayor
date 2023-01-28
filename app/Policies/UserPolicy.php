@@ -42,7 +42,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->is_super();
     }
 
     /**
@@ -71,7 +71,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        //
+        return $user->is_super();
     }
 
     /**
