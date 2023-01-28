@@ -19,10 +19,6 @@ class UsersRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    public function mount(): void
-    {
-
-    }
 
     public static function form(Form $form): Form
     {

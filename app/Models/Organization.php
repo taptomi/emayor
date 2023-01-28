@@ -52,7 +52,7 @@ class Organization extends Model
     {
         parent::boot();
 
-        //static::addGlobalScope(new OrganizationScope);
+        static::addGlobalScope(new OrganizationScope);
     }
 
 }
