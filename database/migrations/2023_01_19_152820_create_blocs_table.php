@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('organization_id')->references('id')->on('organizations')->cascadeOnDelete();
             $table->string('shortname')->limit(50);
             $table->string('title')->nullable()->limit(50);
-            $table->string('content')->limit(250);
+            $table->longText('content');
 
         });
     }

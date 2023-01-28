@@ -22,10 +22,12 @@ class BlocsRelationManager extends RelationManager
             ->schema([
                 Forms\Components\TextInput::make('shortname')
                     ->required()
+                    ->columnSpan(2)
                     ->maxLength(50),
-                Forms\Components\Textarea::make('content')
+                Forms\Components\RichEditor::make('content')
+                    ->columnSpan(2)
                     ->required()
-                    ->maxLength(255),
+
             ]);
     }
 
