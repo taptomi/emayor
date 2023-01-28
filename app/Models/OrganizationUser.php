@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class OrganizationUser extends Model
 {
     use HasFactory;
+
+    protected $fillable=[
+      'user_id',
+      'organization_id'
+    ];
+
+    public function user(){
+
+        return $this->hasOne(User::class,'id','user_id');
+
+    }
 }

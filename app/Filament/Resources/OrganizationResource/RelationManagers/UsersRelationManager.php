@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\OrganizationResource\RelationManagers;
 
+use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -9,20 +10,35 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Component as Livewire;
+
 
 class UsersRelationManager extends RelationManager
 {
-    protected static string $relationship = 'users';
+    protected static string $relationship = 'admins';
 
     protected static ?string $recordTitleAttribute = 'name';
+
+    public function mount(): void
+    {
+
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Select::make('user_id')
+                    ->options(User::pluck('name','id'))
+                    ->searchable()
+                    ->label('Felhasználó')
+                    ->required(),
+                Forms\Components\TextInput::make('organization_id')
+                    ->default(function (Livewire $livewire) {
+                        $livewire->ownerRecord->id;
+                    })
+
+
             ]);
     }
 
@@ -30,7 +46,8 @@ class UsersRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('user.name'),
+
             ])
             ->filters([
                 //
@@ -45,5 +62,5 @@ class UsersRelationManager extends RelationManager
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
-    }    
+    }
 }

@@ -35,6 +35,12 @@ class Organization extends Model
 
     }
 
+    public function admins(){
+
+        return $this->hasMany(OrganizationUser::class,'organization_id','id')->with('user');
+
+    }
+
     public function posts()
     {
 
@@ -46,7 +52,7 @@ class Organization extends Model
     {
         parent::boot();
 
-        static::addGlobalScope(new OrganizationScope);
+        //static::addGlobalScope(new OrganizationScope);
     }
 
 }
