@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Scopes\OrganizationScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Schema;
 
 class Blocs extends Model
 {
@@ -20,7 +21,8 @@ class Blocs extends Model
     }
 
     public static function boot(){
-        /*
+        if(Schema::hasTable('logs')&&Schema::hasTable('blocs')){
+
         static::creating(function ($model) {
             $log = new Log();
             $log->user_id=auth()->user()->id;
@@ -51,7 +53,10 @@ class Blocs extends Model
             $log->meta = $data;
             $log->save();
         });
-        */
+
+
+        }
+
         parent::boot();
 
 

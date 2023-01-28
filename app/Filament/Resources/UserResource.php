@@ -13,6 +13,8 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+use Illuminate\Support\Facades\Hash;
+
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
@@ -33,8 +35,10 @@ class UserResource extends Resource
                 Forms\Components\DateTimePicker::make('email_verified_at'),
                 Forms\Components\TextInput::make('password')
                     ->password()
+                    ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                     ->required()
                     ->maxLength(255),
+
             ]);
     }
 
@@ -67,6 +71,8 @@ class UserResource extends Resource
             //
         ];
     }
+
+
 
     public static function getPages(): array
     {
