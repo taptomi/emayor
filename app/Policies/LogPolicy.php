@@ -18,7 +18,7 @@ class LogPolicy
      */
     public function viewAny(User $user)
     {
-        return auth()->user()->is_super();
+        return $user->is_super();
     }
 
     /**
@@ -30,7 +30,7 @@ class LogPolicy
      */
     public function view(User $user, Log $log)
     {
-        return auth()->user()->is_super();
+        return $user->is_super();
     }
 
     /**
@@ -41,7 +41,7 @@ class LogPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
