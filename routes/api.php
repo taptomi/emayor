@@ -18,6 +18,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::prefix('/domains')->group(function(){
+
+    Route::get('/',[\App\Http\Controllers\API\DomainController::class,'index']);
+
+});
+
+
+
 Route::prefix('/blocs')->group(function(){
 
     Route::get('/',[\App\Http\Controllers\API\BlocsController::class,'index']);
