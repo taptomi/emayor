@@ -25,7 +25,7 @@ class BlocsController extends Controller
         $organization=Organization::withoutGlobalScope(OrganizationScope::class)->where('domain','=',$validated['domain'])->get(['id'])->first();
 
         if($organization!=null){
-            return Blocs::select('shortname','content')->where('organization_id','=',$organization->id)->get();
+            return Blocs::select('id','shortname','content')->where('organization_id','=',$organization->id)->get();
         }
         else{
             abort(404);

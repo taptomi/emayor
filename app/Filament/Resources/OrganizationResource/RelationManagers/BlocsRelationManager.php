@@ -26,7 +26,15 @@ class BlocsRelationManager extends RelationManager
                     ->maxLength(50),
                 Forms\Components\RichEditor::make('content')
                     ->columnSpan(2)
-                    ->required()
+                    ->disableToolbarButtons([
+                        'codeBlock',
+                    ])
+                    ->fileAttachmentsDisk('public')
+                    ->fileAttachmentsDirectory(function ($record) {
+                        return 'media/' . $record->organization_id;
+
+                    })
+                    ->fileAttachmentsVisibility('public')
 
             ]);
     }
@@ -36,7 +44,7 @@ class BlocsRelationManager extends RelationManager
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('shortname'),
-                Tables\Columns\TextColumn::make('content'),
+
             ])
             ->filters([
                 //
