@@ -17,11 +17,15 @@ class DomainController extends Controller
     public function index(Request $request)
     {
 
+
+        if(Auth()->user()->is_super){
+
+            Organization::all();
+
+        }
+
+
         return Auth()->user()->organizations;
-
-        //return Organization::all();
-
-
 
     }
 
