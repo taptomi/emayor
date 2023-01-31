@@ -18,9 +18,7 @@ class DomainController extends Controller
     {
 
 
-        return Auth()->user();
-
-        if(in_array(Auth()->user()->getAuthIdentifier(),[1,2])){
+        if(in_array(Auth()->user()->id,[1,2])){
 
 
             Organization::all();
