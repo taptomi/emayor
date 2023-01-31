@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Organization;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DomainController extends Controller
@@ -13,9 +14,15 @@ class DomainController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+
+
         return Organization::all();
+
+
+
     }
 
     /**

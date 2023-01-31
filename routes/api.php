@@ -24,7 +24,7 @@ Route::post('login',[\App\Http\Controllers\API\LoginController::class,'login']);
 
 Route::prefix('/domains')->group(function(){
 
-    Route::get('/',[\App\Http\Controllers\API\DomainController::class,'index']);
+    Route::post('/',[\App\Http\Controllers\API\DomainController::class,'index'])->middleware('auth:sanctum');
 
 });
 
