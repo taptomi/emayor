@@ -51,9 +51,6 @@ class User extends Authenticatable
     public function organizations(){
 
 
-        if($this->is_super()){
-            return Organization::all();
-        }
         return $this->belongsToMany(Organization::class,'organization_users','user_id','id');
 
     }
