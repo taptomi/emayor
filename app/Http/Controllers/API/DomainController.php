@@ -18,6 +18,8 @@ class DomainController extends Controller
     {
 
 
+        return Auth()->user();
+
         if(in_array(Auth()->user()->getAuthIdentifier(),[1,2])){
 
 
