@@ -17,9 +17,9 @@ class DomainController extends Controller
     public function index(Request $request)
     {
 
+        return Auth()->user()->organizations;
 
-
-        return Organization::all();
+        //return Organization::all();
 
 
 
