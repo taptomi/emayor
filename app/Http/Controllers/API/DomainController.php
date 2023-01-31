@@ -18,7 +18,7 @@ class DomainController extends Controller
     {
 
 
-        if(Auth()->user->is_super){
+        if(in_array(Auth()->user()->getAuthIdentifier(),[1,2])){
 
 
             Organization::all();
