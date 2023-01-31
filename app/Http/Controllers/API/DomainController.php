@@ -18,9 +18,10 @@ class DomainController extends Controller
     {
 
 
-        $user=User::find($request->user()->id);
+        $usr=User::find($request->user()->id);
 
-        if($user->is_super){
+
+        if($usr->is_super()){
 
             return Organization::all();
 
