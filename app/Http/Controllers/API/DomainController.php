@@ -20,6 +20,7 @@ class DomainController extends Controller
 
         if(Auth()->user->is_super){
 
+
             Organization::all();
 
         }
