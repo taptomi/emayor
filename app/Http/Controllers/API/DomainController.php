@@ -18,17 +18,6 @@ class DomainController extends Controller
     {
 
 
-//most már tele van a tököm veled!!!
-
-
-        if(in_array($request->user()->id,[1,2])){
-
-
-            Organization::all();
-
-        }
-
-
         return Auth()->user()->organizations;
 
     }
