@@ -21,12 +21,13 @@ class LoginController extends BaseController
     public function login(Request $request)
     {
 
-        
+
 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $user = Auth::user();
-            $success['token'] =  $user->createToken('eMayor')->plainTextToken;
-            $success['name'] =  $user->name;
+            $success['token'] =  $user->createToken('eMayor',)->plainTextToken;
+            $success['name'] =   $user->name;
+            $success['admin']=   $user->is_super();
 
             return $this->sendResponse($success, 'User login successfully.');
         }
