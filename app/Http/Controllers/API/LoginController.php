@@ -29,6 +29,7 @@ class LoginController extends BaseController
             $success['name'] =   $user->name;
             $success['admin']=   $user->is_super();
 
+
             return $this->sendResponse($success, 'User login successfully.');
         }
         else{
