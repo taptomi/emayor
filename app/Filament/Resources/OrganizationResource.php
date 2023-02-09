@@ -66,6 +66,7 @@ class OrganizationResource extends Resource
             RelationManagers\PostsRelationManager::class,
             RelationManagers\DocumentsRelationManager::class,
             RelationManagers\BlocsRelationManager::class,
+            RelationManagers\FaqsRelationManager::class,
             RelationManagers\UsersRelationManager::class
         ];
     }

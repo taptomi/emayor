@@ -48,11 +48,19 @@ class Organization extends Model
 
     }
 
+    public function faqs(){
+
+        return $this->hasMany(FAQ::class);
+
+    }
+
     protected static function boot()
     {
         parent::boot();
 
         static::addGlobalScope(new OrganizationScope);
     }
+
+
 
 }

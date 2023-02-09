@@ -21,6 +21,8 @@ class Blocs extends Model
     }
 
     public static function boot(){
+
+        /*
         if(Schema::hasTable('logs')&&Schema::hasTable('blocs')){
 
         static::creating(function ($model) {
@@ -50,6 +52,7 @@ class Blocs extends Model
 
         }
 
+        */
         parent::boot();
 
 
