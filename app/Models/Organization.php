@@ -48,15 +48,42 @@ class Organization extends Model
 
     }
 
-    public function faqs(){
+    public function faqs()
+    {
 
-        return $this->hasMany(FAQ::class);
+        return $this->hasMany(FAQ::class, 'organizations_id', 'id');
+
+    }
+
+    public function products()
+    {
+
+        return $this->hasMany(Product::class, 'organizations_id', 'id');
+
+    }
+
+    public function catalogs()
+    {
+
+        return $this->hasMany(Catalog::class);
 
     }
 
     protected static function boot()
     {
+
+        static::created(function ($model) {
+
+            $defaultCatalog = new Catalog();
+
+            $defaultCatalog->organization_id = $model->id;
+            $defaultCatalog->name = "default";
+            $defaultCatalog->save();
+
+        });
+
         parent::boot();
+
 
         static::addGlobalScope(new OrganizationScope);
     }
